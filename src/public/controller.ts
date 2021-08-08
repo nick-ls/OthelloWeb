@@ -57,6 +57,7 @@ socket.on("joinGame", (msg: Color) => {
 		elems[i].style.display = "none";
 	}*/
 	(<HTMLElement>document.getElementById("start")).style.display = "none";
+	(<HTMLElement>document.getElementById("start")).style.display = "";
 	color = Number(msg);
 	whoseTurn = Color.BLACK;
 });

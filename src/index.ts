@@ -13,12 +13,15 @@ app.use(express.static(path.join(__dirname, "public")));
 app.on("/", (req: any, res: any) => {
 	res.sendFile(path.join(__dirname, "index.html"));
 });
+
 app.get("/join/:gameId", (req: any, res: any) => {
 	res.redirect("/?game=" + req.params.gameId);
 });
+
 wss.on("createGame", (msg: any, ws: any) => {
 	joinGame(Game.createGame(), ws);
 });
+
 wss.on("makeMove", (msg: number[], ws: any) => {
 	if (ws.props.gameId && ws.props.player) {		
 		let color: Color = ws.props.player.getColor();
@@ -44,9 +47,11 @@ wss.on("makeMove", (msg: number[], ws: any) => {
 		}
 	}
 });
+
 wss.on("joinGame", (msg: string, ws: any) => {
 	joinGame(msg, ws);
 });
+
 wss.on("close", (ws: any) => {
 	if (Game.runningGames.has(ws.props.gameId)) {
 		let game: Game = Game.runningGames.get(ws.props.gameId);
@@ -59,6 +64,7 @@ wss.on("close", (ws: any) => {
 		}
 	}
 });
+
 function endGame(game: Game) {
 	game.players.forEach(player => {
 		let socket = wss.getSocket(player.getId());
@@ -69,6 +75,7 @@ function endGame(game: Game) {
 	});
 	Game.runningGames.delete(game.getId());
 }
+
 function sendAllPlayersMessage(game: Game, name: string, value: any) {
 	for (let i = 0; i < game.players.length; i++) {
 		let player: Player = game.players[i];
@@ -78,6 +85,7 @@ function sendAllPlayersMessage(game: Game, name: string, value: any) {
 		}
 	}
 }
+
 function joinGame(gameId: string, ws: any) {
 	if (Game.runningGames.has(gameId)) {
 		let game: Game = Game.runningGames.get(gameId);
@@ -90,4 +98,5 @@ function joinGame(gameId: string, ws: any) {
 		}
 	}	
 }
+
 server.listen(8080);

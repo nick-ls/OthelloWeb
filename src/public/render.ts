@@ -2,7 +2,7 @@ const board = <HTMLCanvasElement>document.getElementById("board");
 const c = board.getContext("2d");
 const BOARD_SIZE = 8;
 
-let colors = ["#259a35", "#2ebf41"];//"#26ba3a"];//"#31c445"];//"rgba(0,0,0,0.4)"];
+let colors = ["#259a35", "#2ebf41"];
 
 var squareSize: number = (Math.min(window.innerHeight, window.innerWidth) * 0.8) / 8;
 function drawBoard(boardState: number[][]) {
@@ -14,6 +14,7 @@ function drawBoard(boardState: number[][]) {
 	
 	c.fillStyle = colors[0];
 	c.fillRect(0, 0, sideLength, sideLength);
+	
 	// draw grid lines
 	for (let i = 0; i < BOARD_SIZE; i++) {
 		for (let j = 0; j < BOARD_SIZE; j++) {

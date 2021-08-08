@@ -23,6 +23,7 @@ function getLegalMoves(color: Color, boardState: number[][]): number[][] {
 	}
 	return validMoves;
 }
+
 function isLegalMove(color: Color, row: number, col: number, boardState: number[][]): boolean {
 	if (!_isValidPosition(row, col) || boardState[row][col] !== Color.NONE) return false;
 	for (let dir of directions) {
@@ -30,6 +31,7 @@ function isLegalMove(color: Color, row: number, col: number, boardState: number[
 	}
 	return false;
 }
+
 function _stepFromDirection(targetColor: Color, row: number, col: number, direction: number[], depth: number, boardState: number[][]): boolean {
 	let nextrow = row + direction[0];
 	let nextcol = col + direction[1];
@@ -42,6 +44,7 @@ function _stepFromDirection(targetColor: Color, row: number, col: number, direct
 	}
 	return _stepFromDirection(targetColor, nextrow, nextcol, direction, depth + 1, boardState);
 }
+
 function _isValidPosition(row: number, col: number): boolean {
 	return (row >= 0 && row < 8 && col >= 0 && col < 8);
 }

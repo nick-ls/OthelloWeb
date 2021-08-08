@@ -5,9 +5,10 @@ const {Entropy} = require("entropy-string");
 const entropy = new Entropy();
 
 export default class SocketServer {
+
 	listeners: Listeners;
 	wss: any;
-	// server is an http server instance
+
 	constructor(server: any) {
 		this.listeners = <Listeners>{};
 		this.wss = new websocket.Server({server});
@@ -37,10 +38,12 @@ export default class SocketServer {
 			}
 		});
 	}
+
 	// adds a listener for incoming client communications with the key "listener"
 	public on(listener: string, callback: Function) {
 		this.listeners[listener] = callback;
 	}
+
 	private handle(msg: string, ws: any) {
 		let message = this.parse(msg);
 		if (!message) {
@@ -49,17 +52,7 @@ export default class SocketServer {
 		if (msg === "close" && this.listeners["close"]) return this.listeners["close"](ws);
 		if (message) {
 			if (message.name === "_join") {
-				/*if (this.clients.has(message.content)) {
-					let oldClient: any = this.clients.get(message.content);
-					ws.props = oldClient.props;
-					ws._id = oldClient._id;							
-					ws.sendMsg("socket_id", ws._id);
-					if (this.listeners["rejoin"]) {
-						return this.listeners["rejoin"](ws, oldClient);
-					}
-				} else {*/
-					ws.sendMsg("socket_id", ws._id);								
-				//}
+				ws.sendMsg("socket_id", ws._id);	
 			} else if (this.listeners[message.name]) {
 				if (!message.content && message.content !== "") return;
 				this.listeners[message.name](message.content, ws);
@@ -68,10 +61,12 @@ export default class SocketServer {
 			}
 		}
 	}
+
 	private handleClose(ws: any) {
 		if (!this.listeners["close"]) return;
 		this.listeners["close"](ws);
 	}
+
 	private parse(msg: string): any {
 		try {
 			let message = JSON.parse(msg);
@@ -84,6 +79,7 @@ export default class SocketServer {
 			return msg;
 		}
 	}
+
 	private static buildMessage(name: string, message: any): string {
 		let msg = {
 			name: name,
@@ -91,6 +87,7 @@ export default class SocketServer {
 		};
 		return JSON.stringify(msg);
 	}
+	
 	public getSocket(id: string): any {
 		let target: any = null;
 		this.wss.clients.forEach((client: any) => {

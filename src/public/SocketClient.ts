@@ -19,8 +19,7 @@ export default class SocketClient {
 		if (this.isConnected()) {
 			this.socket.send(message);
 		} else {
-			await // wait for reconnect b4 sending msg
-			this.reconnect(message);
+			await this.reconnect(message);
 		}
 	}
 	private connect(url: string, listeners = {}, message?: string) {

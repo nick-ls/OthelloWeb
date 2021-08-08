@@ -5,6 +5,7 @@ const {Entropy} = require("entropy-string");
 const entropy = new Entropy();
 
 export default class Game {
+	
 	static runningGames: Map<string, Game> = new Map();
 
 	players: Player[];
@@ -20,6 +21,7 @@ export default class Game {
 		this.players = [];
 		Game.runningGames.set(this.id, this);
 	}
+
 	public joinGame(socket: any): boolean {
 		console.log(this.players);
 		if (this.players.length < 2) {
@@ -34,10 +36,12 @@ export default class Game {
 		}
 		return false;
 	}
+
 	public static createGame(): string {
 		let game = new Game();
 		return game.getId();
 	}
+
 	public makeMove(color: any, row: number, col: number): boolean {
 		if (this.turn === color) {
 			if (this.board.makeMove(color, row, col)) {
@@ -49,21 +53,27 @@ export default class Game {
 		}
 		return false;
 	}
+
 	public getScore(): number[] {
 		return this.board.getCurrentScore();
 	}
+
 	public getId(): string {
 		return this.id;
 	}
+
 	public getWhoseTurn(): Color {
 		return this.turn;
 	}
+
 	public getBoard(): number[][] {
 		return this.board.getBoard();
 	}
+
 	public getLegalMoves(color: Color): number[][] {
 		return this.board.getLegalMoves(color);
 	}
+
 	public getPlayer(id: string): Player {
 		let p: Player = null;
 		this.players.forEach((player: Player) => {
@@ -74,6 +84,7 @@ export default class Game {
 		});
 		return p;
 	}
+
 	public removePlayer(id: string): boolean {
 		for (let i = 0; i < this.players.length; i++) {
 			if (this.players[i].getId() === id) {
@@ -86,11 +97,13 @@ export default class Game {
 		}
 		return false;
 	}
+
 	public getWinner() {
 		let scores = this.getScore();
 		// difference will be positive if white wins, negative if black wins, and 0 for a tie
 		return Math.sign(scores[1] -scores[0]);
 	}
+
 	public toString(): string {
 		return this.board.toString();
 	}
