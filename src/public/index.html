@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="start" class="modal">
+	<div class="container">
+		<div id="createGame" class="button"><span>Create Game</span></div>
+		<input class="bigText" type="text" maxlength="6" id="gameID" placeholder="Join Game">
+	</div>
+</div>
+<div class="loadModal">
+	<div class="loading"></div>
+</div>
+<div id="app">
+	<canvas id="board"></canvas>
+</div>
+<div class="rightCenter">
+	<div id="info">
+		<div class="gameCode">
+			<span>Join Code:</span>
+			<span id="joinCode"></span>
+		</div>
+		<div class="w">
+			<span>White</span>
+			<span id="wscore">2</span>
+		</div>
+		<div class="b">
+			<span>Black</span>
+			<span id="bscore">2</span>
+		</div>
+		
+	</div>
+</div>
+<script>var exports = {"__esModule": true};</script>
+<script src="SocketClient.js"></script>
+<script src="boardLogic.js"></script>
+<script src="render.js"></script>
+<script src="controller.js"></script>
+</body>
+</html>
+<!--https://github.com/JaffeAPCSA/Othello/blob/master/src/com/mrjaffesclass/othello/Board.java#L14-->

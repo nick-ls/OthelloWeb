@@ -1,0 +1,11 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"noImplicitAny": true,
+		"allowJs": true,
+		"outDir": "./build",
+		"target": "ES5",
+		"skipLibCheck": true
+	},
+	"include": ["./src"]
+}
