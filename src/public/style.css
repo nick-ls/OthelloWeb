@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400');
+
 :root {
 	--board-green: #4B7F52;
 	--beau-blue: #BFDBF7;
@@ -6,6 +7,7 @@
 	--eerie-black: #201E1F;
 	--english-violet: #3F3244;
 }
+
 html, body {
 	width: 100%;
 	height: 100%;
@@ -14,11 +16,13 @@ html, body {
 	font-size: 1.2em;
 	background: var(--beau-blue);
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 input[type="number"] {
 	padding: 10px 5px 10px 5px;
 	outline: none;
@@ -30,12 +34,16 @@ input[type="number"] {
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
+
 canvas {
 	border: 5px solid var(--english-violet);
 }
+
 #board {
 	cursor: crosshair;
+	z-index: 1;
 }
+
 .w, .b, .gameCode {
 	width: 100%;
 	display: flex;
@@ -44,6 +52,7 @@ canvas {
 	flex-direction: column;
 	padding: 10px 0 10px;
 }
+
 .loadModal {
 	position: fixed;
 	width: 100%;
@@ -53,12 +62,14 @@ canvas {
 	align-items: center;
 	justify-content: center;
 }
+
 .loading {
 	padding: 20px;
 	border-radius: 20px;
 	background: var(--celadon-blue);
 	animation: pulse 1s ease-out 0s infinite normal;
 }
+
 @keyframes pulse {
 	0.0% {
 		padding: 20px;
@@ -71,6 +82,7 @@ canvas {
 		opacity: 0;
 	}
 }
+
 #joinCode {
 	cursor: pointer;
 	margin: 0 10px 0 10px;
@@ -78,30 +90,37 @@ canvas {
 	border-radius: 5px;
 	padding: 5px;
 }
+
 #joinCode::before {
 	content: "\200B";
 }
+
 .gameCode {
 	background: var(--celadon-blue);
 	color: ghostwhite;
 	flex-direction: row;
 }
+
 .b {
 	font-weight: bold;
 	color: ghostwhite;
 	background: var(--eerie-black);
 }
+
 .w {
 	font-weight: bold;
 	color: var(--eerie-black);
 	background: ghostwhite;
 }
+
 #wscore, #bscore {
 	font-size: 1.5em;
 }
+
 #info {
 	width: 100%;
 }
+
 .rightCenter {
 	position: fixed;
 	right: 0;
@@ -112,6 +131,7 @@ canvas {
 	top: 0;
 	width: 15%;
 }
+
 #app {
 	width: 100%;
 	height: 100%;
@@ -119,6 +139,7 @@ canvas {
 	align-items: center;
 	justify-content: center;
 }
+
 .modal {
 	position: fixed;
 	width: 100%;
@@ -127,6 +148,7 @@ canvas {
 	justify-content: center;
 	align-items: center;
 }
+
 .container {
 	padding: 50px;
 	display: flex;
@@ -136,6 +158,7 @@ canvas {
 	background-color: whitesmoke;
 	z-index: -2;
 }
+
 .button {
 	width: -webkit-fill-available;
 	width: -moz-available;
@@ -150,10 +173,12 @@ canvas {
 	text-align: center;
 	cursor: pointer;
 }
+
 .button > span {
 	transition: color 0.2s;
 	z-index: 10;
 }
+
 .button:before {
 	content: "";
 	transition: border-radius 0.2s, height 0.2s, width 0.2s, top 0.2s, left 0.2s;
@@ -167,6 +192,7 @@ canvas {
 	z-index: -1;
 	opacity: 0.1;
 }
+
 .button:hover:before {
 	transition: border-radius 0.2s, height 0.2s, width 0.2s, top 0.2s, left 0.2s;
 	top: 0;
@@ -175,13 +201,16 @@ canvas {
 	height: 100%;
 	border-radius: 0;
 }
+
 .button:hover > span {
 	transition: color 0.2s;
 	color: white;
 }
+
 #create {
 	margin-top: 10px;
 }
+
 .bigText {
 	margin-top: 20px;
 	padding: 10px 5px 10px 5px;
@@ -190,12 +219,15 @@ canvas {
 	text-align: center;
 	font-size: 0.8em;
 }
+
 input[type="radio"] {
 	display: none;
 }
+
 input[type="radio"]:checked + label.labelButton {
 	background: rgba(255,255,255,0.15);
 }
+
 .labelButton {
 	-webkit-user-select: none;
 	user-select: none;
@@ -208,17 +240,21 @@ input[type="radio"]:checked + label.labelButton {
 	padding: 4px;
 	border-radius: 2px;
 }
+
 .labelButton > img {
 	filter: invert(1);
 	width: 35px;
 	height: 35px;
 }
+
 #enemySpan {
 	font-size: 0.7em;
 }
+
 input[type="color"] {
 	display: none;
 }
+
 label#dispColor{
 	display: block;
 	width: 40px;
@@ -228,12 +264,14 @@ label#dispColor{
 	box-shadow: 0 0 0 1px black;
 	cursor: pointer;
 }
+
 .row {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: row;
 }
+
 .smallText {
 	text-align: left;
 	width: 3em;	
@@ -243,11 +281,13 @@ label#dispColor{
 	padding: 5px;
 	margin: 5px;
 }
+
 .smallText:focus {
 	color: black;
 	background: white;
 	outline: none;
 }
+
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
 }
@@ -256,15 +296,18 @@ input[type=range] {
   -webkit-appearance: none;
   margin: 10px 0;
 }
+
 input[type=range]:focus {
   outline: none;
 }
+
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 8px;
   cursor: pointer;
   background: #D3D3D3;
 }
+
 input[type=range]::-webkit-slider-thumb {
   height: 16px;
   width: 10px;
@@ -273,9 +316,11 @@ input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   margin-top: -4px;
 }
+
 input[type="text"] {
 	padding: 5px;
 }
+
 .color {
 	width: calc(20% - 10px);
 	height: 30px;
@@ -284,12 +329,14 @@ input[type="text"] {
 	cursor: pointer;
 	display: block;
 }
+
 .col {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	align-content: center;
 }
+
 #start {
 	z-index: 1;
 }
